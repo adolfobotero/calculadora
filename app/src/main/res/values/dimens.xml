@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">48dp</dimen>
+    <dimen name="margin_title">16dp</dimen>
+    <dimen name="size_buttum">30sp</dimen>
+    <dimen name="width_buttum">100dp</dimen>
+    <dimen name="height_buttum">100dp</dimen>
+</resources>

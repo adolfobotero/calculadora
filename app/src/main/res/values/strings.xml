@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Calculadora</string>
+    <string name="put_name">Put your name</string>
+    <string name="put_lastname">Put your last name</string>
+
+    <string name="tv_result" translatable="false">0</string>
+
+    <string name="btn_eraseAll" translatable="false">AC</string>
+    <string name="btn_parenthesis" translatable="false">( )</string>
+    <string name="btn_porcentage" translatable="false">%</string>
+    <string name="btn_split" translatable="false">/</string>
+
+    <string name="btn_seven" translatable="false">7</string>
+    <string name="btn_eight" translatable="false">8</string>
+    <string name="btn_nine" translatable="false">9</string>
+    <string name="btn_multiply" translatable="false">*</string>
+
+    <string name="btn_four" translatable="false">4</string>
+    <string name="btn_five" translatable="false">5</string>
+    <string name="btn_six" translatable="false">6</string>
+    <string name="btn_subtract" translatable="false">-</string>
+
+    <string name="btn_one" translatable="false">1</string>
+    <string name="btn_two" translatable="false">2</string>
+    <string name="btn_three" translatable="false">3</string>
+    <string name="btn_add" translatable="false">+</string>
+
+    <string name="btn_zero" translatable="false">0</string>
+    <string name="btn_spot" translatable="false">.</string>
+    <string name="btn_delete" translatable="false">|-</string>
+    <string name="btn_equal" translatable="false">=</string>
+</resources>
