@@ -2,66 +2,63 @@ package com.example.myapplication
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.R.id
+import com.example.myapplication.databinding.ActivityCalculadoraBinding
 
 class Calculadora : AppCompatActivity() {
 
-    private lateinit var tvResultado: TextView
+    private lateinit var binding: ActivityCalculadoraBinding
     private var operacionPendiente: String = ""
     private var numeroAnterior: Double = 0.0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculadora)
-
-        tvResultado = findViewById(id.tvResultado)
+        binding = ActivityCalculadoraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Configurar los listeners de los botones numéricos
         val numeros = listOf(
-            id.btnCero, id.btnUno, id.btnDos, id.btnTres, id.btnCuatro,
-            id.btnCinco, id.btnSeis, id.btnSiete, id.btnOcho, id.btnNueve, id.btnDecimal)
+            binding.btnCero, binding.btnUno, binding.btnDos, binding.btnTres, binding.btnCuatro,
+            binding.btnCinco, binding.btnSeis, binding.btnSiete, binding.btnOcho, binding.btnNueve, binding.btnDecimal)
 
-        numeros.forEach { id ->
-            findViewById<Button>(id).setOnClickListener { agregarDigito((it as Button).text.toString()) }
+        numeros.forEach { button ->
+            button.setOnClickListener { agregarDigito((it as Button).text.toString()) }
         }
 
         // Configurar los listeners de los botones de operación
-        val operaciones = listOf(id.btnSumar, id.btnRestar, id.btnMultiplicacion, id.btnDivision, id.btnPorcentaje)
+        val operaciones = listOf(binding.btnSumar, binding.btnRestar, binding.btnMultiplicacion, binding.btnDivision, binding.btnPorcentaje)
 
-        operaciones.forEach { id ->
-            findViewById<Button>(id).setOnClickListener { operar((it as Button).text.toString()) }
+        operaciones.forEach { button ->
+            button.setOnClickListener { operar((it as Button).text.toString()) }
         }
 
         // Configurar el listener del botón igual
-        findViewById<Button>(id.btnIgual).setOnClickListener { calcularResultado() }
+        binding.btnIgual.setOnClickListener { calcularResultado() }
 
         // Configurar el listener del botón borrar
-        findViewById<Button>(id.btnBorrar).setOnClickListener { borrarUltimoDigito() }
+        binding.btnBorrar.setOnClickListener { borrarUltimoDigito() }
 
         // Configurar el listener del botón borrar todo
-        findViewById<Button>(id.btnBorrarTodo).setOnClickListener { borrarTodo() }
+        binding.btnBorrarTodo.setOnClickListener { borrarTodo() }
     }
 
     private fun agregarDigito(digito: String) {
-        val textoActual = tvResultado.text.toString()
+        val textoActual = binding.tvResultado.text.toString()
         if (textoActual == "0") {
-            tvResultado.text = digito
+            binding.tvResultado.text = digito
         } else {
-            tvResultado.append(digito)
+            binding.tvResultado.append(digito)
         }
     }
 
     private fun operar(op: String) {
         operacionPendiente = op
-        numeroAnterior = tvResultado.text.toString().toDouble()
-        tvResultado.text = ""
+        numeroAnterior = binding.tvResultado.text.toString().toDouble()
+        binding.tvResultado.text = ""
     }
 
     private fun calcularResultado() {
-        val numeroActual = tvResultado.text.toString().toDouble()
+        val numeroActual = binding.tvResultado.text.toString().toDouble()
         var resultado = 0.0
 
         when (operacionPendiente) {
@@ -75,24 +72,24 @@ class Calculadora : AppCompatActivity() {
         // Verificar si el resultado es un número entero
         if (resultado % 1 == 0.0) {
             // Mostrar el resultado como entero
-            tvResultado.text = resultado.toInt().toString()
+            binding.tvResultado.text = resultado.toInt().toString()
         } else {
             // Mostrar el resultado con decimales
-            tvResultado.text = resultado.toString()
+            binding.tvResultado.text = resultado.toString()
         }
     }
 
     private fun borrarUltimoDigito() {
-        val textoActual = tvResultado.text.toString()
+        val textoActual = binding.tvResultado.text.toString()
         if (textoActual.length > 1) {
-            tvResultado.text = textoActual.substring(0, textoActual.length - 1)
+            binding.tvResultado.text = textoActual.substring(0, textoActual.length - 1)
         } else {
-            tvResultado.text = "0"
+            binding.tvResultado.text = "0"
         }
     }
 
     private fun borrarTodo() {
-        tvResultado.text = "0"
+        binding.tvResultado.text = "0"
         operacionPendiente = ""
         numeroAnterior = 0.0
     }
